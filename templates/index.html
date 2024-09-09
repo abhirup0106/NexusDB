@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered T-Shirt Store</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+<body>
+
+
+    <div class="bgAnimation" id="bgAnimation">
+        <div class="backgroundAnim">
+
+        </div>
+    </div>
+    <!-- Navigation Bar with Home and About Project Buttons -->
+    <div class="navbar">
+        <h1>👕 Our AI-Powered T-Shirt Store</h1>
+        <button onclick="showHome()">Home</button>
+        <button onclick="showTeam()">Our Team</button>
+        <button onclick="showAbout()">About </button>
+    </div>
+
+    <!-- Home Page Content -->
+    <div id="home" class="content">
+
+
+        <!-- Chatbot Section -->
+        <h3>Chat with your AI assistant</h3>
+        <div id="chatbox">
+            <!-- Chat history will be dynamically loaded here -->
+        </div>
+
+        <!-- Chat Input Form -->
+        <form id="chat-form" onsubmit="handleChat(event)">
+            <input type="text" id="user-input" placeholder="Ask your AI assistant...">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <!-- About Project Page Content -->
+    <div id="Team" class="content" style="display:none;">
+        <h2>🤖 Meet Our AI-Powered Team</h2>
+
+        <!-- Team Section -->
+        <div class="team">
+            <div class="team-member">
+                <img src="/static/images/priyam.jpg" alt="Priyam Ghosh">
+                <p><strong>Priyam Ghosh</strong><br>AI Team Lead</p>
+            </div>
+            <div class="team-member">
+                <img src="/static/images/ujjwal.JPG" alt="Ujjwal Pramanick">
+                <p><strong>Ujjwal Pramanick</strong><br>Frontend AI Specialist</p>
+            </div>
+            <div class="team-member">
+                <img src="/static/images/abhirup.jpg" alt="Abhirup Mukherjee">
+                <p><strong>Abhirup Mukherjee</strong><br>Backend AI Developer</p>
+            </div>
+            <div class="team-member">
+                <img src="/static/images/sourish.jpg" alt="Sourish Panja">
+                <p><strong>Sourish Panja</strong><br>Cloud AI Engineer</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="content" style="display:none;">
+        <h1>🌟 ABOUT OUR AI-DRIVEN PROJECT</h1>
+        <p>
+            Our <strong>AI-Powered T-Shirt Store</strong> is an innovative blend of cutting-edge technology and modern e-commerce, designed to revolutionize the way you shop for apparel. Our store leverages the power of artificial intelligence to provide a personalized, intuitive, and seamless shopping experience, setting new standards in online retail.
+        </p>
+    
+        <h2>Key Features:</h2>
+    
+        <h3>1. AI-Powered Chatbot Assistance:</h3>
+        <p>
+            Our integrated AI assistant helps you navigate through the store, answering your queries in real-time. Whether you need help choosing a product, checking sizes, or getting recommendations based on your preferences, the chatbot is your virtual guide. This is powered by state-of-the-art large language models (LLMs) that understand natural language and respond with human-like interaction.
+        </p>
+    
+        <h3>2. Data-Driven Inventory Management:</h3>
+        <p>
+            We have optimized our backend using advanced data processing to ensure real-time updates of stock and availability. This allows us to keep track of trends and provide you with up-to-date product information for smooth transactions.
+        </p>
+    
+        <h3>3. Custom Design Showcase:</h3>
+        <p>
+            Our background is dynamically animated to showcase the latest arrivals from renowned brands such as Levi, Adidas, and Nike, giving users a visually appealing experience. Each background shifts to highlight various collections available in our store, making browsing more engaging.
+        </p>
+    
+        <h3>4. Teamwork and Innovation:</h3>
+        <p>
+            The project has been brought to life by a team of passionate engineers:
+            <ul>
+                <li><strong>Priyam Ghosh (AI Team Lead)</strong>: Leading the AI team, Priyam oversees the integration of artificial intelligence technologies to create a smooth and intelligent shopping experience.</li>
+                <li><strong>Ujjwal Pramanick (Frontend  Specialist)</strong>: Responsible for designing the user interface and integrating AI features to ensure an interactive and user-friendly experience.</li>
+                <li><strong>Abhirup Mukherjee (Backend  Developer)</strong>: Manages the server-side logic, database management, and the connection between the frontend and AI services.</li>
+                <li><strong>Sourish Panja (Cloud AI Engineer)</strong>: Ensures the scalability and security of the AI services by utilizing cloud infrastructure for handling large-scale operations.</li>
+            </ul>
+        </p>
+    
+        <h2>Our Vision:</h2>
+        <p>
+            We aim to redefine online shopping by utilizing AI to tailor the user experience, automate customer support, and make product suggestions based on customer preferences. With seamless AI integrations, our T-shirt store ensures efficient handling of product management and user interaction, bringing futuristic technology to the fashion retail space.
+        </p>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</body>
+
+</html>

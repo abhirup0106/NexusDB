@@ -1,0 +1,343 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    overflow-x: hidden;
+    background: linear-gradient(120deg, #2f2f2feb, #dcdcdca3);
+    background-image: url(/static/images/Levi\(1\).png);
+    /*background-size: cover;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-size: cover;*/
+    justify-items: auto;
+    animation-name: animate;
+    animation-direction: alternate-reverse;
+    animation-duration: 20s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    animation-timing-function: ease-in-out;
+    /*animation: change 20s ease-in-out;
+    justify-content: center;
+    /*animation: animateBackground 20s linear infinite;*/
+}
+
+@keyframes animateBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+
+/* Navbar styles */
+
+.navbar {
+    background-color: rgba(135, 63, 125, 0.513);
+    padding: 1rem;
+    text-align: right;
+}
+
+.navbar h1 {
+    text-align: left;
+}
+
+.navbar button {
+    background-color: #1a1a1a;
+    color: #00e5ff;
+    border: none;
+    padding: 20px 15px;
+    margin-bottom: 150px;
+    transition-delay: 3s;
+    margin: 5px;
+    margin-top: -180px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar button:hover {
+    background-color: #00e5ff;
+    color: #1a1a1a;
+    transform: scale(1.1);
+}
+
+
+/* Content container */
+
+#about {
+    background: #405557a3;
+}
+
+.content {
+    padding: 40px;
+    animation: fadeIn 2s ease-in-out;
+    max-width: 800px;
+    margin: 0 auto;
+    background: none;
+}
+
+
+/* Team section */
+
+.team {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    text-align: center;
+    margin: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    perspective: 1000px;
+}
+
+.team-member:hover {
+    transform: rotateY(10deg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    transition: transform 0.5s ease;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00e5ff2b, 0 0 20px #00e5ff26;
+}
+
+.team-member img:hover {
+    transform: rotateY(360deg);
+}
+
+
+/* Chat box styles */
+
+
+/*#chatbox {
+    background-color: rgba(0, 0, 0, 0.584);
+    border: 1px solid #ffffff;
+    padding: 20px;
+    height: 300px;
+    /* Increased height for a bigger chat area 
+    overflow-y: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    animation-delay: 5s;
+    box-shadow: 0 0 15px #ffffff;
+}
+
+.chat-bubble {
+    padding: 15px;
+    margin: 8px 0;
+    border-radius: 15px;
+    max-width: 75%;
+    /* Increased width for better readability 
+    display: inline-block;
+    position: relative;
+    font-size: 14px;
+}
+
+
+/* User message bubble - right side 
+
+.user-bubble {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    margin-left: auto;
+    align-self: flex-end;
+    box-shadow: 0 0 10px #405557;
+}
+
+
+/* AI message bubble - left side 
+
+.ai-bubble {
+    background-color: #1a1a1a;
+    color: #ebebeb;
+    margin-right: auto;
+    align-self: flex-start;
+    margin-top: 10px;
+    box-shadow: 0 0 10px #ffffff;
+}*/
+
+
+/* Chat input form styles */
+
+
+/* Chat box styles */
+
+#chatbox {
+    background-color: rgba(0, 0, 0, 0.584);
+    border: 1px solid #ffffff;
+    padding: 20px;
+    height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 15px #ffffff;
+}
+
+
+/* Chat bubble styles */
+
+.chat-bubble {
+    padding: 15px;
+    margin: 8px 0;
+    border-radius: 15px;
+    max-width: 75%;
+    display: inline-block;
+    position: relative;
+    font-size: 14px;
+}
+
+
+/* User message bubble - right side */
+
+.user-bubble {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    margin-left: auto;
+    align-self: flex-end;
+    box-shadow: 0 0 10px #405557;
+}
+
+
+/* AI message bubble - left side */
+
+.ai-bubble {
+    background-color: #1a1a1a;
+    color: #ebebeb;
+    margin-right: auto;
+    align-self: flex-start;
+    margin-top: 10px;
+    box-shadow: 0 0 10px #ffffff;
+}
+
+
+/* Chat input form styles */
+
+#chat-form {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#user-input {
+    flex-grow: 1;
+    padding: 15px;
+    margin-right: 10px;
+    border: 1px solid #00e5ff;
+    border-radius: 5px;
+    background-color: #1a1a1a;
+    color: #00e5ff;
+    font-size: 16px;
+    box-shadow: 0 0 10px #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+#user-input:focus {
+    background-color: #333;
+    outline: none;
+}
+
+#chat-form button {
+    padding: 15px 25px;
+    border: none;
+    background-color: #00e5ff;
+    color: #1a1a1a;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    font-size: 16px;
+    box-shadow: 0 0 10px #00e5ff;
+}
+
+#chat-form button:hover {
+    background-color: #3b3b3b;
+    color: #00e5ff;
+    transform: scale(1.1);
+}
+
+
+/*#chat-form {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#user-input {
+    flex-grow: 1;
+    padding: 15px;
+    margin-right: 10px;
+    border: 1px solid #00e5ff;
+    border-radius: 5px;
+    background-color: #1a1a1a;
+    color: #00e5ff;
+    font-size: 16px;
+    box-shadow: 0 0 10px #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+#user-input:focus {
+    background-color: #333;
+    outline: none;
+}
+
+#chat-form button {
+    padding: 15px 25px;
+    border: none;
+    background-color: #00e5ff;
+    color: #1a1a1a;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    font-size: 16px;
+    box-shadow: 0 0 10px #00e5ff;
+}
+
+#chat-form button:hover {
+    background-color: #3b3b3b;
+    color: #00e5ff;
+    transform: scale(1.1);
+}*/
+
+#Team {
+    background-color: #405557e0;
+}
+
+
+/* Keyframes for animations */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes animate {
+    20% {
+        background-image: url(/static/images/ADIDAS.png);
+    }
+    40% {
+        background-image: url(/static/images/Nike.png);
+    }
+    60% {
+        background-image: url(/static/images/Aesthetic\ New\ Arrival\ Woman\ Jacket\ Instagram\ Post.png);
+    }
+    80% {
+        background-image: url(/static/images/Levi\(1\).png);
+    }
+}
