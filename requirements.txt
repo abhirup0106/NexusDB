@@ -1,13 +1,24 @@
 Flask 
 genai
-GoogleGenerativeAI
-SQLDatabaseChain
-SQLDatabase
-PromptTemplate
-LLMChain
-mysql.connector
-pymysql
-os
-load_dotenv
-ChatGoogleGenerativeAI
-HuggingFaceInferenceAPIEmbeddings
+google-generativeai
+# For LangChain components (SQLDatabaseChain, SQLDatabase, PromptTemplate, LLMChain)
+langchain==0.0.283  # Replace with the correct version you're using
+
+# MySQL Connector
+mysql-connector-python==8.1.0
+
+# PyMySQL
+pymysql==1.0.3
+
+# python-dotenv for environment variables
+python-dotenv==1.0.0
+
+# Google Generative AI integration via LangChain
+langchain-google-palm==0.0.5  # Specify the latest or specific version
+
+# HuggingFace API for embeddings
+transformers==4.33.2
+huggingface-hub==0.19.0
+
+# Required for HuggingFace Inference API and API calls
+requests==2.31.0
