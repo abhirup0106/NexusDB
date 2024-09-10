@@ -35,8 +35,9 @@ body {
 
 /* Navbar styles */
 
-.navbar {
-    background-color: rgba(135, 63, 125, 0.513);
+
+/*.navbar {
+    background-color: #a0cfd31e;
     padding: 1rem;
     text-align: right;
 }
@@ -58,6 +59,124 @@ body {
     cursor: pointer;
     border-radius: 5px;
     transition: transform 0.3s ease, background-color 0.3s ease;
+}*/
+
+
+/*.navbar {
+    background-color: rgba(120, 95, 116, 0.241);
+    padding: 1rem;
+    display: flex;
+    /* Use flexbox to arrange elements in a row */
+
+
+/*justify-content: space-between;
+    /* Space between title and buttons 
+    align-items: center;
+    /* Align items vertically in the center 
+}
+
+.navbar h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    /* Adjust as needed 
+}
+
+.navbar-buttons {
+    display: flex;
+    /* Arrange buttons horizontally 
+}
+
+.navbar-buttons button {
+    background-color: #1a1a1a;
+    color: #00e5ff;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar-buttons button:hover {
+    background-color: #00e5ff;
+    color: #1a1a1a;
+    transform: scale(1.1);
+}*/
+
+.header-container {
+    display: flex;
+    /* Align items in a row */
+    align-items: center;
+    /* Vertically center items */
+    justify-content: space-between;
+    /* Space between the sections */
+    padding: 1rem;
+    background-color: rgba(135, 63, 125, 0.513);
+    /* Background color for header */
+}
+
+.navbar {
+    font-family: "Barriecito", system-ui;
+    font-size: 70px;
+    text-shadow: #1a1a1a;
+    font-weight: 400;
+    flex: 1;
+    /* Allow the navbar title to take up its space */
+    text-align: left;
+    /* Align the title to the left */
+}
+
+.navbar h1 {
+    margin: 0;
+    color: rgb(178, 220, 143);
+    size: 50px;
+    font-size: 50px;
+    text-shadow: #898686;
+    text-shadow: #1a1a1a;
+    padding: 0;
+    font-size: 24px;
+    /* Adjust font size as needed */
+}
+
+.greeting-container {
+    flex: 2;
+    /* Allow the greeting to take up more space */
+    text-align: center;
+    /* Center the greeting */
+}
+
+.greeting-container h3 {
+    color: #00e5ff;
+}
+
+.navbar-buttons {
+    display: flex;
+    /* Arrange buttons horizontally */
+    gap: 10px;
+    /* Space between buttons */
+    flex: 1;
+    /* Allow the buttons to take up space */
+    justify-content: flex-end;
+    /* Align buttons to the right */
+}
+
+.navbar-buttons button {
+    background-color: #1a1a1a;
+    color: #00e5ff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.navbar-buttons button:hover {
+    background-color: #00e5ff;
+    color: #1a1a1a;
+    transform: scale(1.1);
 }
 
 .navbar button:hover {
@@ -69,8 +188,12 @@ body {
 
 /* Content container */
 
+#home h3 {
+    color: #47e2d7;
+}
+
 #about {
-    background: #405557a3;
+    background: #063033bb;
 }
 
 .content {
@@ -113,6 +236,31 @@ body {
 
 .team-member img:hover {
     transform: rotateY(360deg);
+}
+
+.greeting-container {
+    text-align: center;
+    padding: 20px;
+    background-color: #0738302a;
+    color: #277984;
+    border-radius: 50px;
+    margin: 20px auto;
+    /*box-shadow: 0 0 10px #00e5ff;*/
+    max-width: 600px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.greeting-container h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.greeting-container p {
+    font-size: 18px;
+    margin: 0;
+    justify-items: center;
 }
 
 
@@ -315,6 +463,18 @@ body {
     background-color: #405557e0;
 }
 
+#about h1 {
+    color: rgb(153, 223, 215);
+}
+
+#about h2 {
+    color: rgb(153, 223, 215);
+}
+
+#about h3 {
+    color: rgb(153, 223, 215);
+}
+
 
 /* Keyframes for animations */
 
@@ -340,4 +500,14 @@ body {
     80% {
         background-image: url(/static/images/Levi\(1\).png);
     }
+}
+
+.header-container .navbar h1 {
+    font-size: 30px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #dededec8, #27b9d6b9, #3ce5e5b5);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: gradientMove 5s infinite alternate;
 }

@@ -85,6 +85,32 @@ async function handleChat(event) {
 }
 
 
+// Function to generate greeting message
+function greetUser() {
+    const hours = new Date().getHours();
+    let greetingMessage = '';
+
+    // Determine the time of day for personalized greeting
+    if (hours >= 5 && hours < 12) {
+        greetingMessage = "Good Morning! Welcome to our AI-Powered T-Shirt Store! 🌞";
+    } else if (hours >= 12 && hours < 17) {
+        greetingMessage = "Good Afternoon! Explore the latest T-shirts with AI assistance! ☀️";
+    } else {
+        greetingMessage = "Good Evening! Let's find the perfect T-shirt for you with AI! 🌙";
+    }
+
+    // Display greeting message in the greeting container
+    document.getElementById('greeting').innerHTML = `
+            <h2>${greetingMessage}</h2>
+            <p>How can I assist you today?</p>
+        `;
+}
+
+// Call the greetUser function when the page loads
+window.onload = greetUser;
+
+
+
 
 
 // AI response
