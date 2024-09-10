@@ -1,4 +1,4 @@
-Flask, request, render_template ,jsonify
+Flask 
 genai
 GoogleGenerativeAI
 SQLDatabaseChain
