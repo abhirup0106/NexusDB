@@ -1,1 +1,13 @@
-flask
+Flask, request, render_template ,jsonify
+genai
+GoogleGenerativeAI
+SQLDatabaseChain
+SQLDatabase
+PromptTemplate
+LLMChain
+mysql connector
+pymysql
+os
+load_dotenv
+ChatGoogleGenerativeAI
+HuggingFaceInferenceAPIEmbeddings
