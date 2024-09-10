@@ -5,7 +5,7 @@ SQLDatabaseChain
 SQLDatabase
 PromptTemplate
 LLMChain
-mysql connector
+mysql.connector
 pymysql
 os
 load_dotenv
