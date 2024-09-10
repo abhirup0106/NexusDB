@@ -1,8 +1,8 @@
 # Flask for web development
 Flask==2.3.3
 
-# GenAI Python client
-genai==0.4.1
+# GenAI Python client (updated version)
+genai==0.5.0  # Corrected version
 
 google-generativeai==0.1.0
 
