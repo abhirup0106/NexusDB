@@ -63,30 +63,6 @@ embeddings = HuggingFaceInferenceAPIEmbeddings(
 
 
 
-# sql_prompt_template = """
-# You are an expert SQL query generator. Given a natural language input, generate a correct SQL query without any prefixes or comments, only valid SQL.
-
-# Question: {question}
-
-# SQL Query:
-# """
-
-
-# sql_prompt_template = """
-# You are an expert SQL query generator. Below is the schema for the t_shirts table:
-
-# t_shirts(brand, size, color, stock_count)
-
-# Given a natural language input, generate a correct SQL query without any prefixes or comments, only valid SQL. 
-# If the query requires columns that are not in the schema, respond with 'This question cannot be answered from the provided tables'.
-
-# Question: {question}
-
-# SQL Query:
-# """
-
-
-
 
 sql_prompt_template = """
 You are an expert SQL query generator. Below is the schema for the t_shirts table:
@@ -111,87 +87,6 @@ sql_prompt = PromptTemplate(
 
 sql_chain = LLMChain(llm=llm, prompt=sql_prompt)
 
-
-#-----1st no----
-
-# Function to run the prediction
-# def run_prediction(question):
-#     try:
-#         # Example query using Gemini LLM
-#         response = db_chain.run(question)
-#         print(response)
-#         return response
-#     except Exception as e:
-#         return str(e)
-
-
-#----2nd no----
-
-# def run_prediction(question):
-#     try:
-#         # Generate SQL query using the custom prompt
-#         sql_query = sql_chain.run(question)
-        
-#         # Clean up the SQL query if necessary
-#         sql_query = sql_query.replace('```', '').strip()
-
-#         print("Generated SQL Query:", sql_query)
-        
-#         # Execute the query using the database chain
-#         response = db_chain.run(sql_query)
-#         print(response)
-#         return response
-#     except Exception as e:
-#         return str(e)
-
-
-
-#-----3 no -----
-
-# def run_prediction(question):
-#     try:
-#         # Generate SQL query using the custom prompt
-#         sql_query = sql_chain.run(question)
-        
-#         # Clean up the SQL query by removing unwanted formatting
-#         sql_query = sql_query.replace('```sql', '').replace('```', '').strip()
-
-#         print("Generated SQL Query:", sql_query)
-        
-#         # Execute the cleaned query using the database chain
-#         response = db_chain.run(sql_query)
-#         print(response)
-#         return response
-#     except Exception as e:
-#         return str(e)
-
-#---4th no--------
-
-
-
-# def run_prediction(question):
-#     try:
-#         # Generate SQL query using the custom prompt
-#         sql_query = sql_chain.run(question)
-
-#         # Log the raw SQL query to understand the formatting issues
-#         print("Raw SQL Query Generated:", sql_query)
-        
-#         # Aggressive cleanup of any unwanted characters
-#         sql_query = sql_query.replace('```sql', '').replace('```', '').replace('```', '').strip()
-#         sql_query = sql_query.replace("\n", " ").strip()
-
-#         print("Cleaned SQL Query:", sql_query)
-        
-#         # Execute the cleaned query using the database chain
-#         response = db_chain.run(sql_query)
-#         print("Query Result:", response)
-#         return response
-#     except Exception as e:
-#         return str(e)
-
-
-# --------------------5th no----------------
 
 
 def run_prediction(question):
@@ -238,19 +133,6 @@ def run_prediction(question):
     
 
 
-
-
-# @app.route('/chat', methods=['POST'])
-# def chat():
-#     user_message = request.json.get('message')
-    
-#     # Call your AI model or response generation logic
-#     ai_response = ChatGoogleGenerativeAI.generate_response(user_message)
-    
-#     return jsonify({"response": ai_response})
-
-
-
 # Flask route for prediction
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -267,8 +149,6 @@ def predict():
     response = run_prediction(question)
     return jsonify({"response": response})
 
-# if __name__ == '__main__':
-#     app.run(debug=True, port=8080)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
