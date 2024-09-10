@@ -1,6 +1,11 @@
-Flask 
-genai
-google-generativeai
+# Flask for web development
+Flask==2.3.3
+
+# GenAI Python client
+genai==0.4.1
+
+google-generativeai==0.1.0
+
 # For LangChain components (SQLDatabaseChain, SQLDatabase, PromptTemplate, LLMChain)
 langchain==0.0.283  # Replace with the correct version you're using
 
