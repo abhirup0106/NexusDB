@@ -13,9 +13,6 @@ pymysql==1.0.3
 # python-dotenv for environment variables
 python-dotenv==1.0.0
 
-# Google Generative AI integration via LangChain
-langchain-google-palm==0.0.5  # Specify the latest or specific version
-
 # HuggingFace API for embeddings
 transformers==4.33.2
 huggingface-hub==0.19.0
