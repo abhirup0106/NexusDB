@@ -21,8 +21,8 @@ Answer: "AI ASSISTANT:19."
 1. Clone the repository:
    git clone https://github.com/abhirup0106/NexusDB.git
 
-2.Install dependencies:
-  pip install -r requirements.txt
+ 2.Install dependencies:
+   pip install -r requirements.txt
 
 3. Start the application:
    python app.py
