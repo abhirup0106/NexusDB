@@ -1,8 +1,8 @@
-#Project Title: LLM-Powered SQL Query Generator
-#Overview:
+**Project Title: LLM-Powered SQL Query Generator**
+**Overview:**
 Imagine having a personal assistant who can understand your questions about data and give you answers in plain English. That's what this project does! It uses a special type of computer program called a Large Language Model (LLM) to help you ask questions about your data and get the answers you need.
 
-#How it works:
+**How it works:**
 Ask a question: You type a question in regular English, like "How many t-shirts of size 'XS' from the brand 'Adidas' and color 'black' are available?"
 LLM translates: The LLM understands your question and turns it into a special computer language called SQL.
 
@@ -15,9 +15,9 @@ Example:
 Question: "How many t-shirts do we have left for Nike in size XS and color white ?"
 Answer: "AI ASSISTANT:19."
 
-#Have fun exploring your data!
+**Have fun exploring your data!**
 
-#How To Run The Website
+**How To Run The Website**
 1. Clone the repository:
    git clone https://github.com/abhirup0106/NexusDB.git
 
@@ -27,11 +27,11 @@ Answer: "AI ASSISTANT:19."
 3. Start the application:
    python app.py
 
-#Technologies:
+**Technologies:**
 LLM: Specify the GooglePalm, Gemini, SQLDatabaseChain, LLMChain, PromptTemplate and GoogleGeneartiveAi 
 Sentence-Transformer: HuggingFace Embeddings
 Database driver: The driver used to connect to your database (e.g. mysql-connector-python for MySQL)
 Vector Database: ChromaDB
 
-#Acknowledgements:
+**Acknowledgements:**
 Acknowledge any third-party libraries, tools, or resources used in the project.
