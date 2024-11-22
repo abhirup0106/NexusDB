@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>3D Revolving Image</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    /* Use ::before for the blurred background */
+    body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(/static/images/bg3.jpg);
+        background-size: cover;
+        background-position: center;
+        filter: blur(8px); /* Adjust the blur level as needed */
+        z-index: -1; /* Place it behind other elements */
+    }
+    
+
+body bg-img{
+  
+}
+
+    /* Add z-index to content so it's above the blurred background */
+    body > * {
+        position: relative;
+        z-index: 1;
+    }
+    
+
+    .container {
+        text-align: center;
+        background-color: #dcdcdc20;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 90%;
+        max-width: 700px;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+        border-radius: 10px;
+    }
+
+    button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin: 10px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 1s ease;
+        opacity: 0; /* Hidden initially */
+        visibility: hidden; /* Prevents interaction while hidden */
+        animation: fadeIn 1.5s ease forwards; /* Fade-in effect */
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    button a {
+        text-decoration: none;
+        color: white;
+    }
+
+    button a:hover {
+        color: #f4f4f4;
+    }
+
+    /* Keyframes for the 3D rotation */
+    @keyframes revolve3D {
+        0% {
+            transform: rotateY(0deg);
+        }
+        100% {
+            transform: rotateY(360deg);
+        }
+    }
+
+    /* Keyframes for fading in buttons */
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+            visibility: visible; /* Makes the buttons interactive */
+        }
+    }
+
+    /* Styling for the revolving image */
+    .revolving-image {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #00e5ff2b, 0 0 20px #00e5ff26;
+        animation: revolve3D 4s ease-in-out forwards; /* 4 seconds duration */
+    }
+
+    /* Fade-in animation for buttons */
+    #demo {
+        animation-delay: 4.5s; /* Start after image stops revolving */
+    }
+
+    #log{
+        animation-delay: 4.5s; /* Slightly later than the first button */
+    }
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <p>
+            <img 
+                src="/static/images/white_and_green-removebg-preview.png" 
+                alt="Revolving Image" 
+                class="revolving-image"
+            />
+        </p>
+        <p>
+           
+        </p>
+        <p>
+            <button id ="demo" onclick="window.location.href='/index1'">Take a Demo</button>
+              <button id="log" onclick="window.location.href='/login'" ><strong>Login</strong></a>
+            </button>
+        </p>
+    </div>
+</body>
+</html>
