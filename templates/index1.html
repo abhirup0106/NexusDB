@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered T-Shirt Store</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style1.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Fascinate+Inline&family=Handjet:wght@100..900&family=Jersey+25+Charted&display=swap" rel="stylesheet">
+<body>
+
+    <div class="header-container">
+        <div class="navbar">
+            <h1>🤖 AI Powered T-Shirt Store</h1>
+        </div>
+    
+        <div class="greeting-container">
+            <h3>Welcome to the Future of Fashion – where AI meets Data</h3>
+        </div>
+    
+        <div class="navbar-buttons">
+            <button onclick="showHome()">Home</button>
+            <button onclick="showTeam()">Our Team</button>
+            <button onclick="showAbout()">About</button>
+            <button onclick="contact()">Register</button>
+        </div>
+    </div>
+    
+    
+
+
+    <div class="bgAnimation" id="bgAnimation">
+        <div class="backgroundAnim">
+
+        </div>
+    </div>
+
+    <!-- Home Page Content -->
+    <div id="home" class="content">
+
+
+        <!-- Chatbot Section -->
+        <h3>Chat with your AI assistant</h3>
+        <div id="chatbox">
+            <!-- Chat history will be dynamically loaded here -->
+        </div>
+
+        <!-- Chat Input Form -->
+        <form id="chat-form" onsubmit="handleChat(event)">
+            <input type="text" id="user-input" placeholder="Ask your AI assistant...">
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <!-- About Project Page Content -->
+    <div id="Team" class="content" style="display:none;">
+        <h2>🤖 Meet Our NexusDB Team</h2>
+
+        <!-- Team Section -->
+        <div class="team">
+            <div class="team-member">
+                <img src="/static/images/priyam.jpg" alt="Priyam Ghosh">
+                <p><strong>Priyam Ghosh</strong><br>(AI Team Lead)</p>
+            </div>
+            <div class="team-member">
+                <img src="/static/images/ujjwal.JPG" alt="Ujjwal Pramanick">
+                <p><strong>Ujjwal Pramanick</strong><br>Frontend  Specialist</p>
+            </div>
+            <div class="team-member">
+                <img src="/static/images/abhirup.jpg" alt="Abhirup Mukherjee">
+                <p><strong>Abhirup Mukherjee</strong><br>Backend  Developer</p>
+            </div>
+        
+        </div>
+    </div>
+
+    <div id="about" class="content" style="display:none;">
+        <h1>🌟 ABOUT OUR AI-DRIVEN PROJECT</h1>
+        <p>
+            Our <strong>AI-Powered T-Shirt Store</strong> is an innovative blend of cutting-edge technology and modern e-commerce, designed to revolutionize the way you shop for apparel. Our store leverages the power of artificial intelligence to provide a personalized, intuitive, and seamless shopping experience, setting new standards in online retail.
+        </p>
+    
+        <h2>Key Features: 🔎📌</h2>
+    
+        <h3>1. AI-Powered Chatbot Assistance: 🦾</h3>
+        <p>
+            Our integrated AI assistant helps you navigate through the store, answering your queries in real-time. Whether you need help choosing a product, checking sizes, or getting recommendations based on your preferences, the chatbot is your virtual guide. This is powered by state-of-the-art large language models (LLMs) that understand natural language and respond with human-like interaction.
+        </p>
+    
+        <h3>2. Data-Driven Inventory Management: 📂</h3>
+        <p>
+            We have optimized our backend using advanced data processing to ensure real-time updates of stock and availability. This allows us to keep track of trends and provide you with up-to-date product information for smooth transactions.
+        </p>
+    
+        <h3>3. Custom Design Showcase: 🎨</h3>
+        <p>
+            Our background is dynamically animated to showcase the latest arrivals from renowned brands such as Levi, Adidas, and Nike, giving users a visually appealing experience. Each background shifts to highlight various collections available in our store, making browsing more engaging.
+        </p>
+    
+        <h3>4. Teamwork and Innovation: 🤝</h3>
+        <p>
+            The project has been brought to life by a team of passionate engineers:
+            <ul>
+                <li><strong>Priyam Ghosh (AI Team Lead)</strong>: Leading the AI team, Priyam oversees the integration of artificial intelligence technologies to create a smooth and intelligent shopping experience.</li>
+                <li><strong>Ujjwal Pramanick (Frontend  Specialist)</strong>: Responsible for designing the user interface and integrating AI features to ensure an interactive and user-friendly experience.</li>
+                <li><strong>Abhirup Mukherjee (Backend  Developer)</strong>: Manages the server-side logic, database management, and the connection between the frontend and AI services.</li>
+                <li><strong>Sourish Panja (Cloud AI Engineer)</strong>: Ensures the scalability and security of the AI services by utilizing cloud infrastructure for handling large-scale operations.</li>
+            </ul>
+        </p>
+    
+        <h2>Our Vision:  🧑🏻‍💻</h2>
+        <p>
+            We aim to redefine online shopping by utilizing AI to tailor the user experience, automate customer support, and make product suggestions based on customer preferences. With seamless AI integrations, our T-shirt store ensures efficient handling of product management and user interaction, bringing futuristic technology to the fashion retail space.
+        </p>
+    </div>
+    <div id="contact" class="content" style="display:none;">
+       
+        <!-- HTML Structure -->
+      
+ 
+ 
+     <div class="container">
+         <table style="width: 100%; border-collapse: collapse;">
+             <tr>
+                 <!-- Contact form section -->
+                 <td style="text-align: center; padding: 10px;">
+                     <!-- Button to open the Contact Us form -->
+                     <button onclick="showContactForm()" class="form1Button">Open Contact Form</button>
+                     <!-- Contact Us form -->
+                     <div id="contactForm" class="form form1Content" style="display: none; margin-top: 15px;">
+                         <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+                             <input type="hidden" name="access_key" value="9c7b258d-1fc4-4010-bc69-e2af9b033420">
+                             <h3>Contact Us</h3>
+                             <input type="text" name="name" placeholder="Company Name" required>
+                             <input type="email" name="email" placeholder="Company Email ID" required>
+                             <textarea name="message" placeholder="Description" rows="5" required></textarea>
+                             <input type="submit" value="Send Message">
+                         </form>
+                     </div>
+                 </td>
+                 <!-- Register form section -->
+                 <td style="text-align: center; padding: 10px; ">
+                     <!-- Button to open the Register form -->
+                     <button onclick="showRegisterForm()" class="form2Button">Register</button>
+                     <!-- Register form -->
+                     <div id="registerForm" class="form form2Content" style="display: none; margin-top: 15px;">
+                         <h3>Register</h3>
+                         <iframe 
+                             src="https://docs.google.com/forms/d/e/1FAIpQLScrJBYzrKATJPqF8l4y7_rVTxNOk7FUw75F03AJOWQZJ96ZgA/viewform?embedded=true" 
+                             width="100%" 
+                             height="440" 
+                             frameborder="0" 
+                             marginheight="0" 
+                             marginwidth="0">Loading…
+                         </iframe>
+                     </div>
+                 </td>
+             </tr>
+         </table>
+     </div>
+     <script>
+        function showContactForm() {
+            document.getElementById('contactForm').style.display = 'block';
+            document.getElementById('registerForm').style.display = 'none';
+        }
+
+        function showRegisterForm() {
+            document.getElementById('contactForm').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'block';
+        }
+    </script>
+    <script src="{{ url_for('static', filename='js/script1.js') }}" defer></script>
+
+
+
+ <script>
+
+
+const bgAnimation = document.getElementById('bgAnimation');
+const numberOfColorBoxes = 400;
+
+for (let i = 0; i < numberOfColorBoxes; i++) {
+    const colorbox = document.createElement('div');
+    colorbox.classList.add('colorBox');
+    bgAnimation.append(colorBox)
+
+}
+
+function showHome() {
+    document.getElementById('home').style.display = 'block';
+    document.getElementById('Team').style.display = 'none';
+    document.getElementById('about').style.display = 'none';
+    document.getElementById('register').style.display = 'none';
+}
+
+function showTeam() {
+    document.getElementById('home').style.display = 'none';
+    document.getElementById('Team').style.display = 'block';
+    document.getElementById('about').style.display = 'none';
+    document.getElementById('register').style.display = 'none';
+}
+
+function showAbout() {
+    document.getElementById('home').style.display = 'none';
+    document.getElementById('Team').style.display = 'none';
+    document.getElementById('about').style.display = 'block';
+    document.getElementById('register').style.display = 'none';
+}
+
+function showRegister() {
+    document.getElementById('home').style.display = 'none';
+    document.getElementById('Team').style.display = 'none';
+    document.getElementById('about').style.display = 'none';
+    document.getElementById('register').style.display = 'block';
+
+}
+
+// Handle chat input
+// function handleChat(event) {
+//     event.preventDefault(); // Prevent form from submitting
+
+//     const userInput = document.getElementById('user-input').value;
+//     const chatbox = document.getElementById('chatbox');
+
+//     if (userInput.trim() === '') return; // Ignore empty input
+
+//     // Create user chat bubble
+//     const userBubble = document.createElement('div');
+//     userBubble.classList.add('chat-bubble', 'user-bubble');
+//     userBubble.innerText = userInput;
+//     chatbox.appendChild(userBubble);
+
+//     // Scroll chatbox to the bottom
+//     chatbox.scrollTop = chatbox.scrollHeight;
+
+//     // Clear input field
+//     document.getElementById('user-input').value = '';
+
+
+
+async function handleChat(event) {
+    event.preventDefault(); // Prevent form from refreshing the page
+
+    const userInput = document.getElementById('user-input').value;
+
+    if (userInput.trim() === "") {
+        alert("Please enter a question!");
+        return;
+    }
+
+    // Send a POST request to the Flask backend
+    const response = await fetch('/predict1', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ question: userInput }) // Match the key used in Flask
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json();
+        alert(errorData.error || "Something went wrong!");
+        return;
+    }
+
+    const data = await response.json();
+
+    // Display AI assistant's response in the chatbox
+    const chatbox = document.getElementById('chatbox');
+
+    // Create user message
+    const userMessage = document.createElement('p');
+    userMessage.innerHTML = <strong>You:</strong> ${userInput};
+    chatbox.appendChild(userMessage);
+
+    // Create AI response message
+    const aiResponse = document.createElement('p');
+    aiResponse.innerHTML = <strong>AI Assistant:</strong> ${data.response.result || data.response.error || "No response received"};
+    chatbox.appendChild(aiResponse);
+
+    // Scroll chatbox to the bottom
+    chatbox.scrollTop = chatbox.scrollHeight;
+
+    // Clear the input
+    document.getElementById('user-input').value = '';
+}
+
+// Function to generate greeting message
+function greetUser() {
+    const hours = new Date().getHours();
+    let greetingMessage = '';
+
+    // Determine the time of day for personalized greeting
+    if (hours >= 5 && hours < 12) {
+        greetingMessage = "Good Morning! Welcome to our AI-Powered T-Shirt Store! 🌞";
+    } else if (hours >= 12 && hours < 17) {
+        greetingMessage = "Good Afternoon! Explore the latest T-shirts with AI assistance! ☀";
+    } else {
+        greetingMessage = "Good Evening! Let's find the perfect T-shirt for you with AI! 🌙";
+    }
+
+    // Display greeting message in the greeting container
+    document.getElementById('greeting').innerHTML = `
+            <h2>${greetingMessage}</h2>
+            <p>How can I assist you today?</p>
+        `;
+}
+
+// Call the greetUser function when the page loads
+window.onload = greetUser;
+
+
+
+
+
+// AI response
+// setTimeout(() => {
+//     const aiBubble = document.createElement('div');
+//     aiBubble.classList.add('chat-bubble', 'ai-bubble');
+
+//     if (userInput.toLowerCase() === 'hi' || userInput.toLowerCase() === 'hii') {
+//         aiBubble.innerText = 'Hello! How can I assist you today? 😊';
+//     } else {
+//         aiBubble.innerText = You said: "${userInput}" - I'm here to help!;
+//     }
+
+//     chatbox.appendChild(aiBubble);
+//     chatbox.scrollTop = chatbox.scrollHeight;
+// }, 500);
+
+</script>
+</body>
+
+</html>
