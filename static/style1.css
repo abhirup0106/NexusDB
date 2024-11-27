@@ -1,0 +1,355 @@
+/* Body Styling */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    overflow-x: hidden;
+    background: linear-gradient(120deg, #2f2f2feb, #dcdcdc);
+    background-image: url(/static/images/bg3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation-name: animate;
+    animation-duration: 20s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+
+/* Animations */
+
+@keyframes animateBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+
+/* @keyframes animate {
+    20% {
+        background-image: url(/static/images/ADIDAS.png);
+    }
+    40% {
+        background-image: url(/static/images/Nike.png);
+    }
+    60% {
+        background-image: url(/static/images/Aesthetic\ New\ Arrival\ Woman\ Jacket\ Instagram\ Post.png);
+    }
+    80% {
+        background-image: url(/static/images/Levi\(1\).png);
+    }
+} */
+
+
+/* Navbar Styling */
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+    background: rgba(121, 120, 120, 0.095);
+}
+
+.navbar h1 {
+    margin: 0;
+    color: rgb(178, 220, 143);
+    size: 50px;
+    font-size: 50px;
+    text-shadow: #898686;
+    text-shadow: #1a1a1a;
+    padding: 0;
+    font-size: 24px;
+    /* Adjust font size as needed */
+}
+
+.navbar-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+#home h3 {
+    margin-left: 150px;
+}
+
+.navbar-buttons button {
+    background-color: #00e5ff;
+    color: #1a1a1a;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.navbar-buttons button:hover {
+    background-color: #50555aaa;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+
+/* Greeting Section */
+
+.greeting-container {
+    text-align: center;
+    padding: 30px;
+    background-color: rgba(10, 10, 10, 0.8);
+    color: #00e5ff;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.greeting-container h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-shadow: 0 0 5px #00e5ff;
+}
+
+
+/* Team Section */
+
+.team {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 2rem;
+}
+
+.team-member {
+    text-align: center;
+    margin: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00e5ff, 0 0 20px #00e5ff;
+}
+
+.team-member img:hover {
+    transform: scale(1.1);
+}
+
+
+/* Register Form */
+
+#registerForm {
+    background-color: rgba(0, 0, 0, 0.85);
+    width: 100%;
+    max-width: 450px;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    margin: 2rem auto;
+}
+
+#registerForm h2 {
+    font-weight: bold;
+    font-size: 28px;
+    color: #00e5ff;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+#registerForm label {
+    font-weight: bold;
+    font-size: 16px;
+    color: #00e5ff;
+    margin-top: 1rem;
+    display: block;
+}
+
+#registerForm input,
+#registerForm button {
+    width: 100%;
+    padding: 12px 15px;
+    margin-top: 10px;
+    border: 1px solid #00e5ff;
+    border-radius: 5px;
+    background-color: #1a1a1a;
+    color: #00e5ff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+#registerForm button {
+    background-color: #00e5ff;
+    color: #1a1a1a;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#registerForm button:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+#about {
+    display: none;
+    /* Initially hidden */
+    padding: 20px;
+    margin: 55px auto;
+    background-color: rgba(60, 58, 58, 0.271);
+    /* Semi-transparent white */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    max-width: 1500px;
+    color: #f2f2f2;
+    /* Text color */
+    font-size: 16px;
+    line-height: 1.2;
+    font-family: 'Poppins', sans-serif;
+    backdrop-filter: blur(10px);
+    /* Blurs the background behind this div */
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.team {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    text-align: center;
+    margin: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    perspective: 1000px;
+}
+
+.team-member:hover {
+    transform: rotateY(10deg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    transition: transform 0.5s ease;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00e5ff2b, 0 0 20px #00e5ff26;
+}
+
+
+/* Chat Box */
+
+#chatbox {
+    background-color: rgba(0, 0, 0, 0.584);
+    border: 1px solid #ffffff;
+    padding: 20px;
+    height: 300px;
+    margin-left: 140px;
+    width: 1200px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 15px #292828;
+}
+
+
+/* Chat bubble styles */
+
+.chat-bubble {
+    padding: 15px;
+    margin: 8px 0;
+    border-radius: 15px;
+    max-width: 75%;
+    display: inline-block;
+    position: relative;
+    font-size: 14px;
+}
+
+
+/* User message bubble - right side */
+
+.user-bubble {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    margin-left: auto;
+    align-self: flex-end;
+    box-shadow: 0 0 10px #405557;
+}
+
+
+/* AI message bubble - left side */
+
+.ai-bubble {
+    background-color: #1a1a1a;
+    color: #ebebeb;
+    margin-right: auto;
+    align-self: flex-start;
+    margin-top: 10px;
+    box-shadow: 0 0 10px #ffffff;
+}
+
+
+/* Chat input form styles */
+
+#chat-form {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#user-input {
+    flex-grow: 1;
+    padding: 15px;
+    margin-left: 140px;
+    margin-right: 25px;
+    border: 1px solid #00e5ff;
+    border-radius: 5px;
+    width: 1000px;
+    background-color: #1a1a1a;
+    color: #00e5ff;
+    font-size: 16px;
+    box-shadow: 0 0 10px #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+#user-input:focus {
+    background-color: #333;
+    outline: none;
+}
+
+#chat-form button {
+    padding: 15px 25px;
+    border: none;
+    background-color: #00e5ff;
+    color: #1a1a1a;
+    border-radius: 5px;
+    margin-right: 155px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    font-size: 16px;
+    box-shadow: 0 0 10px #00e5ff;
+}
+
+#chat-form button:hover {
+    background-color: #3b3b3b;
+    color: #00e5ff;
+    transform: scale(1.1);
+}
