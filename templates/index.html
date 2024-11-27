@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered T-Shirt Store</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Fascinate+Inline&family=Handjet:wght@100..900&family=Jersey+25+Charted&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="header-container">
+        <div id="navbar" class ="navbar">
+           <img src="/static/images/white_and_green-removebg-preview.png">
+        </div>
+
+        
+        <div class="greeting-container">
+            <h3 class="glow">🤖 AI Powered Store <–> where AI meets Data</h3>
+        </div>
+
+        <div class="navbar-buttons">
+            <button class="nav-btn" onclick="showHome()"><i class="fa-solid fa-house"></i><span class="tooltip">Home</span></button>
+            <button class="nav-btn" onclick="showTeam()"><i class="fa-solid fa-users"></i><span class="tooltip">Team</span></button>
+            <button class="nav-btn" onclick="showAbout()"><i class="fa-solid fa-sliders"></i><span class="tooltip">About</span></button>
+            <button class="nav-btn" onclick="contact()"><i class="fa-solid fa-message"></i><span class="tooltip">Contact</span></button>
+            <a href="/logout" class="logout-button"><i class="fa-solid fa-right-from-bracket"></i><span class="tooltip">Log Out</span></a>
+        
+
+        </div>
+    </div>
+
+    <script>
+        // Function to handle button click and set the active state
+        function setActiveButton(button) {
+            // Remove the 'active' class from all buttons
+            const buttons = document.querySelectorAll('.navbar-buttons button, .navbar button');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+    
+            // Add the 'active' class to the clicked button
+            button.classList.add('active');
+        }
+    
+        // Add event listeners to each button
+        const buttons = document.querySelectorAll('.navbar-buttons button, .navbar button');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => setActiveButton(button));
+        });
+    </script>
+    
+    <div class="header-container">
+        <div class="three-dots-menu" id="three-dots-menu">
+            <button onclick="toggleDropdown()" class="menu-button">
+                <i class="fa-solid fa-circle-down"></i><span class="tooltip">more </span><!-- 3 dots icon -->
+            </button>
+            <div id="dropdown-content" class="dropdown-content">
+                <div class="container">
+                    <h1>Check Stock</h1>
+                    <div id="dropdown-container"></div>
+                    <div>
+                      <button id="check-stock-btn">Check Stock</button>
+                    </div>
+                    <div id="stock-messages" class="stock-message"></div>
+                    
+                    <!-- Table for displaying stock dynamically -->
+                    <table id="stock-table" style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+                        <thead>
+                          <tr>
+                            <th style="text-align: left; padding: 8px; border: 1px solid #ddd;">Product ID</th>
+                            <th style="text-align: left; padding: 8px; border: 1px solid #ddd;">Brand Name</th>
+                            <th style="text-align: left; padding: 8px; border: 1px solid #ddd;">Stock Quantity</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!-- Dynamic rows will be added here -->
+                        </tbody>
+                      </table>
+                      
+                      
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+   // Fetch dropdown values and populate the dropdowns dynamically
+// Fetch dropdown values and populate the dropdowns dynamically
+
+/**
+ * Fetches stock quantity based on filters and dynamically updates the UI.
+ * @param {Object} filters - Filters to be applied (e.g., { company: 'Nike' }).
+ */
+ /*@param {Object} filters - Filters to be applied (e.g., { company: 'Nike' }).
+ */
+ async function fetchDropdownValues() {
+    try {
+        const response = await fetch('/get_dropdown_values', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({}), // Sending empty payload (optional)
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        if (data.success) {
+            populateDropdowns(data.values);
+        } else {
+            alert(data.message || "Failed to fetch dropdown values.");
+        }
+    } catch (error) {
+        console.error('Error fetching dropdown values:', error);
+        alert('Failed to load dropdown values.');
+    }
+}
+
+/**
+ * Populate dropdowns dynamically based on the values fetched.
+ * @param {Object} values - Key-value pairs where keys are column names and values are arrays of options.
+ */
+function populateDropdowns(values) {
+    const container = document.getElementById('dropdown-container');
+    container.innerHTML = ''; // Clear any existing dropdowns
+
+    // Create dropdowns for each column
+    for (const columnName in values) {
+        const dropdownGroup = document.createElement('div');
+        dropdownGroup.classList.add('dropdown-group');
+
+        const label = document.createElement('label');
+        label.textContent = columnName.charAt(0).toUpperCase() + columnName.slice(1);
+        label.setAttribute('for', columnName);
+
+        const select = document.createElement('select');
+        select.id = columnName;
+        select.name = columnName;
+
+        // Add a "Select any" option
+        const selectAnyOption = document.createElement('option');
+        selectAnyOption.value = ''; // Empty value indicates 'select any'
+        selectAnyOption.textContent = 'Select any';
+        select.appendChild(selectAnyOption);
+
+        // Add options dynamically from the values object
+        values[columnName].forEach((value) => {
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = value;
+            select.appendChild(option);
+        });
+
+        dropdownGroup.appendChild(label);
+        dropdownGroup.appendChild(select);
+        container.appendChild(dropdownGroup);
+    }
+}
+
+
+
+function toggleDropdown() {
+    const dropdownContent = document.getElementById('dropdown-content');
+    let backdrop = document.getElementById('backdrop');
+
+    // Create backdrop dynamically if not present
+    if (!backdrop) {
+        backdrop = createBackdrop();
+    }
+
+    // Check current visibility state
+    const isDropdownVisible = dropdownContent.style.display === 'block';
+
+    if (isDropdownVisible) {
+        closeDropdown(dropdownContent, backdrop);
+    } else {
+        openDropdown(dropdownContent, backdrop);
+    }
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const dropdown = document.querySelector(".dropdown-content");
+        const items = dropdown.children; // Assuming direct children are the dropdown items
+        const columnWidth = 120; // Minimum column width in pixels
+    
+        if (items.length) {
+            const columns = Math.ceil(items.length); // Calculate number of columns
+            const newWidth = Math.min(columns * columnWidth, window.innerWidth - 20); // Cap width to fit screen
+            dropdown.style.width = `${newWidth}px`;
+        }
+    });
+    
+
+
+}
+
+function openDropdown(dropdownContent, backdrop) {
+    dropdownContent.style.display = 'block';
+    backdrop.style.display = 'block';
+    document.body.classList.add('no-scroll'); // Prevent scrolling in the background
+}
+
+function closeDropdown(dropdownContent, backdrop) {
+    dropdownContent.style.display = 'none';
+    backdrop.style.display = 'none';
+    document.body.classList.remove('no-scroll'); // Restore scrolling
+}
+
+function createBackdrop() {
+    const backdrop = document.createElement('div');
+    backdrop.id = 'backdrop';
+    document.body.appendChild(backdrop);
+
+    // Add event listener to close dropdown on backdrop click
+    backdrop.addEventListener('click', () => {
+        const dropdownContent = document.getElementById('dropdown-content');
+        closeDropdown(dropdownContent, backdrop);
+    });
+
+    return backdrop;
+}
+
+
+
+
+
+
+
+// Attach the event listener to the "Check Stock" button that is already in the HTML
+document.getElementById("check-stock-btn").addEventListener("click", async function () {
+    // Collect selected values from dropdowns
+    const selectedValues = {};
+    const dropdowns = document.querySelectorAll('select');
+
+    dropdowns.forEach((dropdown) => {
+        selectedValues[dropdown.name] = dropdown.value;
+    });
+
+    // Ensure at least one filter is selected
+    if (Object.values(selectedValues).every((value) => value === '')) {
+        alert('Please select at least one filter option.');
+        return;
+    }
+
+    // Call the API to check stock
+    try {
+        const response = await fetch('http://localhost:5000/checkStock', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ selected_values: selectedValues }),
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        // Get the table element
+        const tableBody = document.getElementById("stock-table").getElementsByTagName("tbody")[0];
+
+        // Clear any existing rows
+        tableBody.innerHTML = "";
+
+        // Populate the table with stock data
+        if (data.success && data.stock_data.length > 0) {
+            data.stock_data.forEach((item) => {
+                const row = tableBody.insertRow();
+                const productIdCell = row.insertCell(0);
+                const brandNameCell = row.insertCell(1);
+                const stockQuantityCell = row.insertCell(2);
+
+                productIdCell.textContent = item.product_id;
+                brandNameCell.textContent = item.brand_name;
+                stockQuantityCell.textContent = item.stock_quantity;
+
+                productIdCell.style.border = "1px solid #ddd";
+                brandNameCell.style.border = "1px solid #ddd";
+                stockQuantityCell.style.border = "1px solid #ddd";
+                productIdCell.style.padding = "8px";
+                brandNameCell.style.padding = "8px";
+                stockQuantityCell.style.padding = "8px";
+            });
+        } else {
+            // Show a message if no stock is available
+            const row = tableBody.insertRow();
+            const cell = row.insertCell();
+            cell.colSpan = 3;
+            cell.textContent = data.message || "No stock available for the selected filters.";
+            cell.style.textAlign = "center";
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert("SORRY CURRENTLY OUT OF STOCK");
+    }
+});
+
+// Fetch dropdown values when the page loads
+document.addEventListener('DOMContentLoaded', fetchDropdownValues);
+
+
+
+
+
+// Fetch dropdown values when the page loads
+//document.addEventListener('DOMContentLoaded', fetchDropdownValues);
+
+
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Function to generate the energy rings
+        function createEnergyEffect() {
+            const energyRing = document.createElement('div');
+            energyRing.classList.add('energy-ring');
+    
+            // Position the energy ring at the center of the screen
+            energyRing.style.top = '50%';
+            energyRing.style.left = '50%';
+            energyRing.style.transform = 'translate(-50%, -50%)';
+    
+            // Append the energy ring to the body
+            document.body.appendChild(energyRing);
+    
+            // Remove the energy ring after the animation ends
+            setTimeout(() => {
+                energyRing.remove();
+            }, 3500); // Remove after the animation duration
+        }
+    
+        // Trigger the energy effect every 5 seconds
+        setInterval(() => {
+            createEnergyEffect();
+        }, 5000); // Creates energy every 5 seconds
+    });
+    
+    
+</script>
+
+
+
+
+    <div class="bgAnimation" id="bgAnimation">
+        <div class="backgroundAnim"></div>
+    </div>
+
+    <!-- Home Page Content -->
+    <div id="home" class="content">
+        <h3>Chat with your AI assistant</h3>
+        <div id="chatbox">
+            <!-- Chat history will be dynamically loaded here -->
+        </div>
+
+        <!-- Chat Input Form -->
+        <form id="chat-form" onsubmit="handleChat(event)">
+            <label for="file-upload" class="file-upload-label">
+                <i class="fa fa-paperclip"></i> <!-- Paperclip icon -->
+                <input type="file" id="file-upload" class="file-upload-input" accept=".txt,.pdf,.doc,.docx" onchange="handleFileUpload(event)">
+            </label>
+            <input type="text" id="user-input" placeholder="Ask your AI assistant...">
+            <button type="submit" id="submit-button"><i class="fa fa-arrow-right"></i></button>
+            <button id="stop-button" type="button" onclick="stopResponse()" disabled><i class="fa-solid fa-stop"></i></button>
+        </form>
+    </div>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<!-- Paperclip icon inside the chat section -->
+
+<footer>
+    <p>&copy; 2024 NexusDB. All rights reserved.</p>
+</footer>
+
+
+    <!-- Team Page Content -->
+    <div id="Team" class="content" style="display:none;">
+        <h2>🤖 Meet Our NexusDB Team</h2>
+        <div class="team">
+            <div class="team-member">
+                <img src="/static/images/priyam.jpg" alt="Priyam Ghosh">
+                <p><strong>Priyam Ghosh</strong><br>(AI Team Lead)</p>
+            </div>
+            <div class="team-member">
+                <img src="/static/images/ujjwal.JPG" alt="Ujjwal Pramanick">
+                <p><strong>Ujjwal Pramanick</strong><br>Frontend Specialist</p>
+            </div>
+            <div class="team-member">
+                <img src="/static/images/abhirup.jpg" alt="Abhirup Mukherjee">
+                <p><strong>Abhirup Mukherjee</strong><br>Backend Developer</p>
+            </div>
+          
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 NexusDB. All rights reserved.</p>
+    </footer>
+    
+
+
+    <!-- About Project Page Content -->
+    <div id="about" class="content" style="display:none;">
+        <h1>🌟 ABOUT OUR AI-DRIVEN PROJECT</h1>
+        <p>
+            Our <strong>AI-Powered T-Shirt Store</strong> is an innovative blend of cutting-edge technology and modern e-commerce, designed to revolutionize the way you shop for apparel. Our store leverages the power of artificial intelligence to provide a personalized, intuitive, and seamless shopping experience, setting new standards in online retail.
+        </p>
+
+        <h2>Key Features: 🔎📌</h2>
+        <h3>1. AI-Powered Chatbot Assistance: 🦾</h3>
+        <p>
+            Our integrated AI assistant helps you navigate through the store, answering your queries in real-time. Whether you need help choosing a product, checking sizes, or getting recommendations based on your preferences, the chatbot is your virtual guide. This is powered by state-of-the-art large language models (LLMs) that understand natural language and respond with human-like interaction.
+        </p>
+
+        <h3>2. Data-Driven Inventory Management: 📂</h3>
+        <p>
+            We have optimized our backend using advanced data processing to ensure real-time updates of stock and availability. This allows us to keep track of trends and provide you with up-to-date product information for smooth transactions.
+        </p>
+
+        <h3>3. Custom Design Showcase: 🎨</h3>
+        <p>
+            Our background is dynamically animated to showcase the latest arrivals from renowned brands such as Levi, Adidas, and Nike, giving users a visually appealing experience. Each background shifts to highlight various collections available in our store, making browsing more engaging.
+        </p>
+
+        <h3>4. Teamwork and Innovation: 🤝</h3>
+        <p>
+            The project has been brought to life by a team of passionate engineers:
+            <ul>
+                <li><strong>Priyam Ghosh (AI Team Lead)</strong>: Leading the AI team, Priyam oversees the integration of artificial intelligence technologies to create a smooth and intelligent shopping experience.</li>
+                <li><strong>Ujjwal Pramanick (Frontend Specialist)</strong>: Responsible for designing the user interface and integrating AI features to ensure an interactive and user-friendly experience.</li>
+                <li><strong>Abhirup Mukherjee (Backend Developer)</strong>: Manages the server-side logic, database management, and the connection between the frontend and AI services.</li>
+                <li><strong>Sourish Panja (Cloud AI Engineer)</strong>: Ensures the scalability and security of the AI services by utilizing cloud infrastructure for handling large-scale operations.</li>
+            </ul>
+        </p>
+
+        <h2>Our Vision: 🧑🏻‍💻</h2>
+        <p>
+            We aim to redefine online shopping by utilizing AI to tailor the user experience, automate customer support, and make product suggestions based on customer preferences. With seamless AI integrations, our T-shirt store ensures efficient handling of product management and user interaction, bringing futuristic technology to the fashion retail space.
+        </p>
+    </div>
+    <footer>
+        <p>&copy; 2024 NexusDB. All rights reserved.</p>
+    </footer>
+    
+
+    <div id="contact" class="content" style="display:none;">
+       
+       <!-- HTML Structure -->
+     
+
+
+    <div class="container">
+        <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+                <!-- Contact form section -->
+                <td style="text-align: center; padding: 10px;">
+                    <!-- Button to open the Contact Us form -->
+                    <button onclick="showContactForm()" class="form1Button">Open Contact Form</button>
+                    <!-- Contact Us form -->
+                    <div id="contactForm" class="form form1Content" style="display: none; margin-top: 15px;">
+                        <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+                            <input type="hidden" name="access_key" value="9c7b258d-1fc4-4010-bc69-e2af9b033420">
+                            <h3>Contact Us</h3>
+                            <input type="text" name="name" placeholder="Company Name" required>
+                            <input type="email" name="email" placeholder="Company Email ID" required>
+                            <textarea name="message" placeholder="Description" rows="5" required></textarea>
+                            <input type="submit" value="Send Message">
+                        </form>
+                    </div>
+                </td>
+                <!-- Register form section -->
+                <td style="text-align: center; padding: 10px; ">
+                    <!-- Button to open the Register form -->
+                    <button onclick="showRegisterForm()" class="form2Button">Register</button>
+                    <!-- Register form -->
+                    <div id="registerForm" class="form form2Content" style="display: none; margin-top: 15px;">
+                        <h3>Register</h3>
+                        <iframe 
+                            src="https://docs.google.com/forms/d/e/1FAIpQLScrJBYzrKATJPqF8l4y7_rVTxNOk7FUw75F03AJOWQZJ96ZgA/viewform?embedded=true" 
+                            width="100%" 
+                            height="430" 
+                            frameborder="0" 
+                            marginheight="0" 
+                            marginwidth="0">Loading…
+                        </iframe>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+<!------new fearture -->
+
+
+
+
+
+<!-- Add this at the bottom of your HTML file -->
+
+
+
+
+
+    <!-- JavaScript -->
+    <script>
+        function showContactForm() {
+            document.getElementById('contactForm').style.display = 'block';
+            document.getElementById('registerForm').style.display = 'none';
+        }
+
+        function showRegisterForm() {
+            document.getElementById('contactForm').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'block';
+        }
+    </script>
+
+<div class="social-links">
+    <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+</div>
+
+<footer>
+    <p>&copy; 2024 NexusDB. All rights reserved.</p>
+</footer>
+
+
+
+
+    
+        
+
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</body>
+
+</html>
