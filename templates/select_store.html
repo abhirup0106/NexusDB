@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Select Store</title>
+</head>
+<body>
+    <h1>Select a Store</h1>
+    <form action="/open-store" method="POST">
+        <label for="storeName">Choose a Store:</label>
+        <select name="storeName" id="storeName">
+            {% for store in stores %}
+            <option value="{{ store }}">{{ store }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <button type="submit">Open Store</button>
+    </form>
+</body>
+</html>

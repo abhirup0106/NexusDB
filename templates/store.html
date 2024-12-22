@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ store }} Data</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>Data for {{ store }}</h1>
+    <div class="container">
+        {{ data_html|safe }}
+    </div>
+    <a href="/">Logout</a>
+</body>
+</html>
